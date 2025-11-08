@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import LogoutButton from "../modules/auth/components/logout-button";
 import dashboardRoutes from "@/modules/dashboard/dashboard.route";
 import todosRoutes from "@/modules/todos/todos.route";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export function Navigation() {
     return (
@@ -32,7 +33,10 @@ export function Navigation() {
                             </Link>
                         </div>
                     </div>
-                    <LogoutButton />
+                    <div className="flex items-center space-x-2">
+                        <ModeToggle />
+                        <LogoutButton />
+                    </div>
                 </div>
             </div>
         </nav>
