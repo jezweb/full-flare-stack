@@ -88,7 +88,16 @@ export function AddCategory({ onCategoryAdded }: AddCategoryProps) {
                     Add new category
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent
+                className="sm:max-w-[425px]"
+                onPointerDownOutside={(e) => {
+                    // Prevent dialog from closing when native color picker is used
+                    const target = e.target as HTMLElement;
+                    if (target.closest('input[type="color"]')) {
+                        e.preventDefault();
+                    }
+                }}
+            >
                 <DialogHeader>
                     <DialogTitle>Add New Category</DialogTitle>
                     <DialogDescription>
