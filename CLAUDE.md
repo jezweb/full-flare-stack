@@ -482,6 +482,32 @@ pnpm run build:cf
 
 ---
 
+## shadcn/ui Component Installation
+
+**Interactive CLI Issue:**
+The `pnpm dlx shadcn@latest add [component]` command is interactive and asks whether to overwrite existing files. This cannot be automated by AI assistants.
+
+**Solution:** When Claude needs shadcn components:
+1. Claude will identify required components
+2. Claude will provide the exact command to run
+3. **You run it manually** and press "n" when asked to overwrite existing files
+4. Takes ~30 seconds
+
+**Example:**
+```bash
+# Claude says: "Please run this command and press 'n' for any overwrite prompts:"
+pnpm dlx shadcn@latest add navigation-menu dropdown-menu avatar
+
+# You press 'n' for button.tsx, separator.tsx, etc.
+```
+
+**Future optimization ideas:**
+- Pre-install all ~50 shadcn/ui components upfront
+- Create shadcn skill with pre-downloaded components
+- Use shadcn MCP server for automated component viewing
+
+---
+
 ## Common Commands Quick Reference
 
 ### Development

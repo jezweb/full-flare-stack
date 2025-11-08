@@ -24,6 +24,7 @@ This project uses a **feature-based module architecture** where each feature is 
 src/modules/
 ├── auth/           ← Required (authentication & user management)
 ├── dashboard/      ← Required (protected page layout)
+├── layouts/        ← Required (layout system - sidebar, top-nav, etc.)
 └── todos/          ← Optional (example CRUD feature)
 ```
 
@@ -101,9 +102,64 @@ module-name/
 
 ---
 
+#### 3. **layouts** - Layout System
+
+**Purpose:** Provides 5 production-ready layout variants for different app types.
+
+**Dependencies:**
+- auth module (for authentication in protected layouts)
+- shadcn/ui sidebar component
+- shadcn/ui sheet component (mobile drawer)
+- shadcn/ui dropdown-menu component
+
+**Database Tables:** None
+
+**Key Files:**
+- `src/modules/layouts/components/types.ts` - Navigation types
+- `src/modules/layouts/components/user-nav.tsx` - User dropdown menu
+- `src/modules/layouts/components/app-sidebar.tsx` - Sidebar navigation
+- `src/modules/layouts/components/header.tsx` - Header bar
+- `src/modules/layouts/sidebar/sidebar.layout.tsx` - Collapsible sidebar layout
+- `src/modules/layouts/top-nav/top-nav.layout.tsx` - Horizontal navigation layout
+- `src/modules/layouts/hybrid/hybrid.layout.tsx` - Top header + sidebar layout
+- `src/modules/layouts/centered/centered.layout.tsx` - Centered content layout
+- `src/modules/layouts/marketing/marketing.layout.tsx` - Public pages with footer
+
+**Layout Variants:**
+1. **Sidebar** - Dashboards, CRMs, admin panels (collapsible, keyboard shortcuts)
+2. **Top Nav** - Simple apps, tools (horizontal navigation, full-width)
+3. **Hybrid** - Complex SaaS (top header + sidebar, most polished)
+4. **Centered** - Docs, blogs, forms (max-width content, optimal reading)
+5. **Marketing** - Landing pages (public, no auth, with footer)
+
+**Usage Example:**
+```tsx
+// app/dashboard/layout.tsx
+import SidebarLayout from "@/modules/layouts/sidebar/sidebar.layout";
+
+export default async function Layout({ children }) {
+  return <SidebarLayout>{children}</SidebarLayout>;
+}
+```
+
+**Features:**
+- ✅ Full responsive behavior (desktop/tablet/mobile)
+- ✅ Dark/light theme support
+- ✅ Keyboard shortcuts (Cmd+B to toggle sidebar)
+- ✅ Cookie state persistence (sidebar open/closed)
+- ✅ Active route highlighting
+- ✅ Mobile drawer (Sheet component)
+- ✅ Follows shadcn/ui standards
+
+**Can be removed?** ⚠️ Required - but you can delete individual layout variants you don't need
+
+**See:** [LAYOUTS.md](./LAYOUTS.md) for complete documentation
+
+---
+
 ### 📦 Optional Modules
 
-#### 3. **todos** - Todo CRUD Example
+#### 4. **todos** - Todo CRUD Example
 
 **Purpose:** Example feature demonstrating full CRUD operations with categories.
 

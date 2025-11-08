@@ -45,6 +45,39 @@ cp .dev.vars.example .dev.vars
 # 4. Start building your app!
 ```
 
+---
+
+## 🎨 Flexible Layouts
+
+Choose from **5 production-ready layouts** to match your app type:
+
+| Layout | Best For | Features |
+|--------|----------|----------|
+| **Sidebar** | Dashboards, CRMs, Admin Panels | Collapsible sidebar, keyboard shortcuts (Cmd+B), mobile drawer |
+| **Top Nav** | Simple Apps, Tools | Horizontal navigation, full-width content |
+| **Hybrid** | Complex SaaS, Enterprise | Top header + sidebar, most polished |
+| **Centered** | Docs, Blogs, Forms | Max-width content, optimal reading |
+| **Marketing** | Landing Pages | Public pages with footer, no auth |
+
+**See [LAYOUTS.md](./LAYOUTS.md)** for complete documentation on:
+- How to choose the right layout
+- Customizing navigation and branding
+- Responsive behavior and keyboard shortcuts
+- Examples and best practices
+
+**Quick Example:**
+```tsx
+// app/dashboard/layout.tsx
+import SidebarLayout from "@/modules/layouts/sidebar/sidebar.layout";
+
+export default async function Layout({ children }) {
+  return <SidebarLayout>{children}</SidebarLayout>;
+}
+```
+
+All layouts follow **shadcn/ui standards** with Radix UI components, full responsiveness, and dark/light theme support.
+
+---
 
 ## 🌟 Why Cloudflare + Next.js?
 
