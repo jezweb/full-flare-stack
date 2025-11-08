@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { ColorPicker } from "@/components/ui/color-picker";
 import {
     Dialog,
     DialogContent,
@@ -88,16 +89,7 @@ export function AddCategory({ onCategoryAdded }: AddCategoryProps) {
                     Add new category
                 </Button>
             </DialogTrigger>
-            <DialogContent
-                className="sm:max-w-[425px]"
-                onPointerDownOutside={(e) => {
-                    // Prevent dialog from closing when native color picker is used
-                    const target = e.target as HTMLElement;
-                    if (target.closest('input[type="color"]')) {
-                        e.preventDefault();
-                    }
-                }}
-            >
+            <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                     <DialogTitle>Add New Category</DialogTitle>
                     <DialogDescription>
@@ -137,10 +129,9 @@ export function AddCategory({ onCategoryAdded }: AddCategoryProps) {
                                 <FormItem>
                                     <FormLabel>Color</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            type="color"
-                                            className="w-20 h-10 p-1 rounded cursor-pointer"
-                                            {...field}
+                                        <ColorPicker
+                                            value={field.value || "#6366f1"}
+                                            onChange={field.onChange}
                                         />
                                     </FormControl>
                                     <FormDescription>
