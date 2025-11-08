@@ -191,8 +191,13 @@ export function TodoForm({
                     success: initialData
                         ? "Todo updated successfully!"
                         : "Todo created successfully!",
-                    error: (err) =>
-                        err instanceof Error ? err.message : "Failed to save todo",
+                    error: (err) => {
+                        // Don't show toast for Next.js redirects (flow control, not errors)
+                        if (err instanceof Error && err.message === "NEXT_REDIRECT") {
+                            return null;
+                        }
+                        return err instanceof Error ? err.message : "Failed to save todo";
+                    },
                 });
             } catch (error) {
                 // Error already shown by toast.promise
