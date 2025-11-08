@@ -128,19 +128,11 @@ export function AddCategory({ onCategoryAdded }: AddCategoryProps) {
                                 <FormItem>
                                     <FormLabel>Color</FormLabel>
                                     <FormControl>
-                                        <div className="flex items-center space-x-2">
-                                            <Input
-                                                type="color"
-                                                className="w-16 h-10 p-1 rounded cursor-pointer"
-                                                {...field}
-                                            />
-                                            <Input
-                                                type="text"
-                                                placeholder="#6366f1"
-                                                className="flex-1"
-                                                {...field}
-                                            />
-                                        </div>
+                                        <Input
+                                            type="color"
+                                            className="w-20 h-10 p-1 rounded cursor-pointer"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormDescription>
                                         Choose a color to identify this category
