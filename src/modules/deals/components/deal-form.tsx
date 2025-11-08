@@ -130,10 +130,10 @@ export function DealForm({ initialData, contacts }: DealFormProps) {
                                     <Select
                                         onValueChange={(value) =>
                                             field.onChange(
-                                                value ? Number.parseInt(value) : undefined,
+                                                value === "__none__" ? undefined : Number.parseInt(value),
                                             )
                                         }
-                                        value={field.value?.toString()}
+                                        value={field.value?.toString() || "__none__"}
                                     >
                                         <FormControl>
                                             <SelectTrigger>
@@ -141,7 +141,7 @@ export function DealForm({ initialData, contacts }: DealFormProps) {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            <SelectItem value="">None</SelectItem>
+                                            <SelectItem value="__none__">None</SelectItem>
                                             {contacts.map((contact) => (
                                                 <SelectItem
                                                     key={contact.id}
