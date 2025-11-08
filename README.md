@@ -2,13 +2,48 @@
 
 # ⚡ Full-Stack Next.js + Cloudflare Template
 
-A production-ready template for building full-stack applications with Next.js 15 and Cloudflare's powerful edge infrastructure. Perfect for MVPs with generous free tiers and seamless scaling to enterprise-level applications.
+A **modular starter kit** for building full-stack applications with Next.js 15 and Cloudflare's powerful edge infrastructure. Perfect for MVPs with generous free tiers and seamless scaling to enterprise-level applications.
 
 **Inspired by the [Cloudflare SaaS Stack](https://github.com/supermemoryai/cloudflare-saas-stack)** - the same stack powering [Supermemory.ai](https://git.new/memory), which serves 20k+ users on just $5/month. This template modernizes that approach with Cloudflare Workers (vs Pages), includes comprehensive D1 and R2 examples, and provides a complete development workflow.
 
 You can read detail explanations and code architecture of this template from Devin AI on [Deepwiki](https://deepwiki.com/ifindev/fullstack-next-cloudflare).
 
 Don't forget to leave a star if you find this helpful ⭐️
+
+---
+
+## 🧩 Modular Architecture
+
+This template uses a **feature-based module system** that makes it easy to:
+
+- ✅ **Start new projects** - Fork this repo and customize modules
+- ✅ **Remove unwanted features** - Delete module folders you don't need
+- ✅ **Add new features** - Follow the established pattern for consistency
+- ✅ **Reuse modules** - Copy modules to other projects
+
+**See [MODULES.md](./MODULES.md)** for complete documentation on:
+- Available modules (auth, todos, dashboard)
+- How to remove a module
+- How to add a new module
+- Best practices and common issues
+
+**Quick Start for New Projects:**
+```bash
+# 1. Fork this repository
+git clone https://github.com/your-username/fullstack-next-cloudflare.git my-app
+cd my-app
+
+# 2. Remove unwanted modules (optional)
+rm -rf src/modules/todos
+# See MODULES.md for complete removal steps
+
+# 3. Install and configure
+pnpm install
+cp .dev.vars.example .dev.vars
+# Edit .dev.vars with your credentials
+
+# 4. Start building your app!
+```
 
 
 ## 🌟 Why Cloudflare + Next.js?
