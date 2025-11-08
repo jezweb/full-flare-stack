@@ -13,7 +13,7 @@ export function Navigation() {
                             href="/"
                             className="text-xl font-bold text-gray-900"
                         >
-                            TodoApp
+                            CRM
                         </Link>
                         <div className="items-center space-x-4 hidden md:flex">
                             <Link href="/">
