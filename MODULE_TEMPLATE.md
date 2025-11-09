@@ -64,7 +64,7 @@ mkdir -p src/modules/invoices/{actions,components,models,schemas,utils}
 ```
 
 **Result:**
-```
+```plaintext
 src/modules/invoices/
 ├── actions/       ← Server actions (create, read, update, delete)
 ├── components/    ← React components
@@ -1027,7 +1027,7 @@ Before deploying your new module:
 - Add search/filter functionality
 - Implement pagination
 - Add sorting options
-- Create export to PDF feature
+- Create export-to-PDF feature
 - Add email notifications
 - Implement recurring invoices
 
