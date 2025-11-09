@@ -1,8 +1,10 @@
 # Claude Code Project Context
 
-**Project:** fullstack-next-cloudflare-demo
-**Type:** Modular starter kit / template
-**Last Updated:** 2025-11-08
+**Project:** Full Flare Stack
+**Type:** Production-ready Next.js + Cloudflare Workers starter kit
+**Repository:** https://github.com/jezweb/full-flare-stack
+**Last Updated:** 2025-11-10
+**Version:** 1.0.0
 
 ---
 
@@ -40,12 +42,50 @@ This is a **production-ready modular starter kit** that can be forked and custom
 - ✅ Example CRUD module (todos with categories)
 - ✅ Dark/light mode theming
 - ✅ Modular architecture (see MODULES.md)
+- ✅ Three-layer component system (primitives → patterns → features)
+- ✅ 43 shadcn/ui components installed (Layer 1 foundation complete)
+- ✅ 5 production layout variants (authenticated, marketing, minimal, split, dashboard)
 
 **Intentionally missing:**
 - ❌ Automated tests (manual testing only)
 - ❌ Payment integration
 - ❌ Email sending
 - ❌ Advanced AI features (example exists, not production-ready)
+
+---
+
+## Component Architecture
+
+This project uses a **three-layer component architecture** for building scalable applications:
+
+### Layer 1: UI Primitives (`/components/ui/`)
+- **43 shadcn/ui components installed** (foundation complete as of 2025-11-10)
+- Includes: forms, data display, overlays, feedback, layout, navigation
+- See: [COMPONENT_INVENTORY.md](./docs/COMPONENT_INVENTORY.md) for complete list
+
+### Layer 2: Composed Patterns (`/components/composed/`)
+- Reusable UI patterns built from Layer 1 primitives
+- NO business logic, NO database access
+- Build after 3rd use of a pattern
+- Examples: DataTable, PageHeader, SearchableSelect, FileUpload
+- See: [COMPOSED_PATTERNS_ROADMAP.md](./docs/COMPOSED_PATTERNS_ROADMAP.md) for build priorities
+
+### Layer 3: Feature Modules (`/modules/[feature]/`)
+- Business logic, Server Actions, database access
+- Feature-specific components
+- Uses Layer 1 + Layer 2 components
+- See: [MODULES.md](./MODULES.md) for module system
+
+**Quick Decision:**
+- Has business logic? → `/modules/[feature]/components/`
+- Used in 3+ features? → `/components/composed/[category]/`
+- shadcn component? → `/components/ui/`
+
+**Architecture Documentation:**
+- [Architecture Overview](./docs/development-planning/architecture-overview.md) - Three-layer system explained
+- [Component Decision Framework](./docs/development-planning/component-decision-framework.md) - Where to put components
+- [Pattern Library Plan](./docs/development-planning/pattern-library-plan.md) - Detailed pattern specifications
+- [Module Development Guide](./docs/development-planning/module-development-guide.md) - Building features
 
 ---
 
@@ -586,18 +626,35 @@ pnpm run lint
 │   │   ├── (auth)/            # Auth pages (login, signup)
 │   │   ├── api/               # API routes
 │   │   └── dashboard/         # Protected pages
-│   ├── components/            # Shared UI components
-│   │   └── ui/                # shadcn/ui components
+│   ├── components/            # Three-layer component system
+│   │   ├── ui/                # Layer 1: shadcn/ui primitives (43 components)
+│   │   ├── composed/          # Layer 2: Reusable patterns (to be built)
+│   │   │   ├── data-display/
+│   │   │   ├── layouts/
+│   │   │   ├── forms/
+│   │   │   ├── feedback/
+│   │   │   ├── media/
+│   │   │   └── navigation/
+│   │   └── shared/            # One-off components
 │   ├── db/                    # Database configuration
 │   │   ├── index.ts          # DB connection
 │   │   └── schema.ts         # Central schema exports
-│   ├── modules/               # Feature modules (see MODULES.md)
+│   ├── modules/               # Layer 3: Feature modules (see MODULES.md)
 │   │   ├── auth/             # Authentication (required)
 │   │   ├── dashboard/        # Dashboard layout (required)
 │   │   └── todos/            # Example CRUD (optional)
 │   ├── lib/                   # Shared utilities
 │   └── drizzle/              # Database migrations
 ├── docs/                      # Documentation
+│   ├── development-planning/  # Architecture documentation
+│   │   ├── architecture-overview.md
+│   │   ├── component-decision-framework.md
+│   │   ├── pattern-library-plan.md
+│   │   └── module-development-guide.md
+│   ├── templates/            # Documentation templates
+│   │   └── PATTERN_TEMPLATE.md
+│   ├── COMPONENT_INVENTORY.md     # 43 installed shadcn components
+│   ├── COMPOSED_PATTERNS_ROADMAP.md  # Pattern build priorities
 │   ├── API_ENDPOINTS.md
 │   ├── DATABASE_SCHEMA.md
 │   ├── IMPLEMENTATION_PHASES.md
@@ -667,6 +724,15 @@ ls -la docs/            # Available documentation
 - [MODULE_TEMPLATE.md](./MODULE_TEMPLATE.md) - Create new modules
 - [SESSION.md](./SESSION.md) - Current session state
 
+**Component Architecture:**
+- [COMPONENT_INVENTORY.md](./docs/COMPONENT_INVENTORY.md) - 43 installed shadcn components
+- [COMPOSED_PATTERNS_ROADMAP.md](./docs/COMPOSED_PATTERNS_ROADMAP.md) - Pattern build priorities
+- [Architecture Overview](./docs/development-planning/architecture-overview.md) - Three-layer system
+- [Component Decision Framework](./docs/development-planning/component-decision-framework.md) - Where components go
+- [Pattern Library Plan](./docs/development-planning/pattern-library-plan.md) - Detailed pattern specs
+- [Module Development Guide](./docs/development-planning/module-development-guide.md) - Building features
+- [PATTERN_TEMPLATE.md](./docs/templates/PATTERN_TEMPLATE.md) - Template for documenting patterns
+
 **Technical Documentation:**
 - [Next.js 15 Docs](https://nextjs.org/docs)
 - [Cloudflare Workers](https://developers.cloudflare.com/workers/)
@@ -683,6 +749,6 @@ ls -la docs/            # Available documentation
 
 ---
 
-**Last Updated:** 2025-11-08
+**Last Updated:** 2025-11-10
 **Maintainer:** Jez (jeremy@jezweb.net)
 **Claude Code Version:** This file is optimized for Claude Code CLI
