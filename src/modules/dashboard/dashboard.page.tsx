@@ -1,4 +1,4 @@
-import { CheckSquare, List, Plus } from "lucide-react";
+import { CheckSquare, List, Plus, Layout } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +22,7 @@ export default async function Dashboard() {
                 </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                         <CardTitle className="flex items-center">
@@ -58,6 +58,26 @@ export default async function Dashboard() {
                             <Button className="w-full" variant="outline">
                                 <Plus className="mr-2 h-4 w-4" />
                                 Create New Todo
+                            </Button>
+                        </Link>
+                    </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow border-primary/50">
+                    <CardHeader>
+                        <CardTitle className="flex items-center">
+                            <Layout className="mr-2 h-5 w-5" />
+                            Layout Demos
+                        </CardTitle>
+                        <CardDescription>
+                            Explore 5 production-ready layout variants
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Link href="/layout-demo/sidebar">
+                            <Button className="w-full" variant="secondary">
+                                <Layout className="mr-2 h-4 w-4" />
+                                View Layouts
                             </Button>
                         </Link>
                     </CardContent>
