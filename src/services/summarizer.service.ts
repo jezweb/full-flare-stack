@@ -75,7 +75,7 @@ export class SummarizerService {
 
     private buildSystemPrompt(
         maxLength: number,
-        style: string,
+        style: SummaryStyles,
         language: string,
     ): string {
         const styleInstructions: Record<SummaryStyles, string> = {

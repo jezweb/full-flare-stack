@@ -34,12 +34,12 @@ export default async function Dashboard() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <Link href="/dashboard/todos">
-                            <Button className="w-full">
+                        <Button asChild className="w-full">
+                            <Link href="/dashboard/todos">
                                 <CheckSquare className="mr-2 h-4 w-4" />
                                 Go to Todos
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
                     </CardContent>
                 </Card>
 
@@ -54,16 +54,16 @@ export default async function Dashboard() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <Link href="/dashboard/todos/new">
-                            <Button className="w-full" variant="outline">
+                        <Button asChild className="w-full" variant="outline">
+                            <Link href="/dashboard/todos/new">
                                 <Plus className="mr-2 h-4 w-4" />
                                 Create New Todo
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
                     </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-shadow border-primary/50">
+                <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                         <CardTitle className="flex items-center">
                             <Layout className="mr-2 h-5 w-5" />
@@ -74,12 +74,12 @@ export default async function Dashboard() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <Link href="/layout-demo/sidebar">
-                            <Button className="w-full" variant="secondary">
+                        <Button asChild className="w-full" variant="secondary">
+                            <Link href="/layout-demo/sidebar">
                                 <Layout className="mr-2 h-4 w-4" />
                                 View Layouts
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
                     </CardContent>
                 </Card>
             </div>

@@ -5,8 +5,13 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/modules/auth/actions/auth.action";
 import authRoutes from "../auth.route";
+import type React from "react";
 
-export default function LogoutButton() {
+interface LogoutButtonProps extends React.ComponentProps<typeof Button> {
+    // Any additional props can be defined here
+}
+
+export default function LogoutButton({ variant = "ghost", className, ...props }: LogoutButtonProps) {
     const router = useRouter();
 
     const handleLogout = async () => {
@@ -24,7 +29,7 @@ export default function LogoutButton() {
     };
 
     return (
-        <Button variant="ghost" onClick={handleLogout}>
+        <Button variant={variant} className={className} onClick={handleLogout} {...props}>
             Log Out <LogOut className="size-4" />
         </Button>
     );

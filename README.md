@@ -224,6 +224,7 @@ CLOUDFLARE_D1_TOKEN=your-api-token
 BETTER_AUTH_SECRET=your-random-secret-here
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
+NEXT_PUBLIC_AUTH_URL=http://localhost:3000  # SSR fallback for auth URL
 
 # Storage
 CLOUDFLARE_R2_URL=your-r2-bucket-url
@@ -407,6 +408,7 @@ CLOUDFLARE_D1_TOKEN=your-api-token
 BETTER_AUTH_SECRET=your-generated-secret
 GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=your-google-client-secret
+NEXT_PUBLIC_AUTH_URL=http://localhost:3000  # SSR fallback for auth URL
 # Get this from R2 bucket settings: R2 Object Storage → Your Bucket → Settings → Public Development URL
 CLOUDFLARE_R2_URL=https://pub-a1b2c3d4e5f6g7h8i9j0.r2.dev
 ```

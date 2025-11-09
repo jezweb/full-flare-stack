@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Upload, X } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -69,12 +68,15 @@ interface TodoFormProps {
 
 type FormData = z.infer<typeof insertTodoSchema>;
 
+// Image validation constants
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
+const ALLOWED_IMAGE_TYPES = ["image/png", "image/jpeg", "image/jpg"];
+
 export function TodoForm({
     user,
     categories: initialCategories,
     initialData,
 }: TodoFormProps) {
-    const router = useRouter();
     const [isPending, startTransition] = useTransition();
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(
@@ -111,17 +113,15 @@ export function TodoForm({
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            // Validate file size (5MB = 5 * 1024 * 1024 bytes)
-            const maxSize = 5 * 1024 * 1024;
-            if (file.size > maxSize) {
+            // Validate file size
+            if (file.size > MAX_IMAGE_SIZE) {
                 toast.error("Image must be less than 5MB");
                 e.target.value = ""; // Reset input
                 return;
             }
 
             // Validate file type
-            const validTypes = ["image/png", "image/jpeg", "image/jpg"];
-            if (!validTypes.includes(file.type)) {
+            if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
                 toast.error("Only PNG and JPG images are allowed");
                 e.target.value = ""; // Reset input
                 return;

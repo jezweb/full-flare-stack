@@ -372,7 +372,7 @@ pnpm run db:migrate:local
 
 **Rule:** Modules can depend on `auth`, but NOT on each other.
 
-```
+```text
 auth (required)
   ↓
 dashboard (required - layout)
@@ -580,7 +580,7 @@ pnpm run lint
 
 ## File Structure Reference
 
-```
+```text
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── (auth)/            # Auth pages (login, signup)

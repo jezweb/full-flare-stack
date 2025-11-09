@@ -42,18 +42,18 @@ export default async function TopNavLayout({ children }: TopNavLayoutProps) {
 								TodoApp
 							</Link>
 							<div className="hidden items-center gap-4 md:flex">
-								<Link href={dashboardRoutes.dashboard}>
-									<Button variant="ghost" size="sm">
+								<Button asChild variant="ghost" size="sm">
+									<Link href={dashboardRoutes.dashboard}>
 										<Home className="mr-2 h-4 w-4" />
 										Home
-									</Button>
-								</Link>
-								<Link href={todosRoutes.list}>
-									<Button variant="ghost" size="sm">
+									</Link>
+								</Button>
+								<Button asChild variant="ghost" size="sm">
+									<Link href={todosRoutes.list}>
 										<CheckSquare className="mr-2 h-4 w-4" />
 										Todos
-									</Button>
-								</Link>
+									</Link>
+								</Button>
 							</div>
 						</div>
 
@@ -81,18 +81,18 @@ export default async function TopNavLayout({ children }: TopNavLayoutProps) {
 										</SheetDescription>
 									</SheetHeader>
 									<div className="mt-6 flex flex-col gap-4">
-										<Link href={dashboardRoutes.dashboard}>
-											<Button variant="ghost" size="sm" className="w-full justify-start">
+										<Button asChild variant="ghost" size="sm" className="w-full justify-start">
+											<Link href={dashboardRoutes.dashboard}>
 												<Home className="mr-2 h-4 w-4" />
 												Home
-											</Button>
-										</Link>
-										<Link href={todosRoutes.list}>
-											<Button variant="ghost" size="sm" className="w-full justify-start">
+											</Link>
+										</Button>
+										<Button asChild variant="ghost" size="sm" className="w-full justify-start">
+											<Link href={todosRoutes.list}>
 												<CheckSquare className="mr-2 h-4 w-4" />
 												Todos
-											</Button>
-										</Link>
+											</Link>
+										</Button>
 										<div className="mt-4 border-t pt-4">
 											<UserNav user={user} />
 										</div>

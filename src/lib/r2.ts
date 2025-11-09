@@ -7,11 +7,30 @@ export interface UploadResult {
     error?: string;
 }
 
+// File validation constants
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ALLOWED_MIME_TYPES = ["image/png", "image/jpeg", "image/jpg"];
+
 export async function uploadToR2(
     file: File,
     folder: string = "uploads",
 ): Promise<UploadResult> {
     try {
+        // Server-side file validation
+        if (file.size > MAX_FILE_SIZE) {
+            return {
+                success: false,
+                error: "File size exceeds 5MB limit",
+            };
+        }
+
+        if (!ALLOWED_MIME_TYPES.includes(file.type)) {
+            return {
+                success: false,
+                error: "Only PNG and JPEG files are allowed",
+            };
+        }
+
         const { env } = await getCloudflareContext();
 
         // Generate unique filename
@@ -47,7 +66,7 @@ export async function uploadToR2(
 
         // Return public URL of R2 (should be using custom domain)
         // CLOUDFLARE_R2_URL already includes the protocol (https://)
-        const publicUrl = `${(env as any).CLOUDFLARE_R2_URL}/${key}`;
+        const publicUrl = `${env.CLOUDFLARE_R2_URL}/${key}`;
 
         return {
             success: true,

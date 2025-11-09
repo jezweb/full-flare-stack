@@ -64,7 +64,7 @@ mkdir -p src/modules/invoices/{actions,components,models,schemas,utils}
 ```
 
 **Result:**
-```plaintext
+```text
 src/modules/invoices/
 ├── actions/       ← Server actions (create, read, update, delete)
 ├── components/    ← React components

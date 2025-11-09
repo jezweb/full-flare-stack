@@ -96,18 +96,18 @@ export default function HybridLayoutDemo() {
 					<CardDescription>Explore all 5 layout variants</CardDescription>
 				</CardHeader>
 				<CardContent className="flex flex-wrap gap-2">
-					<Link href="/layout-demo/sidebar">
-						<Button variant="outline">Sidebar Layout</Button>
-					</Link>
-					<Link href="/layout-demo/top-nav">
-						<Button variant="outline">Top Nav Layout</Button>
-					</Link>
-					<Link href="/layout-demo/centered">
-						<Button variant="outline">Centered Layout</Button>
-					</Link>
-					<Link href="/marketing-demo">
-						<Button variant="outline">Marketing Layout</Button>
-					</Link>
+					<Button asChild variant="outline">
+						<Link href="/layout-demo/sidebar">Sidebar Layout</Link>
+					</Button>
+					<Button asChild variant="outline">
+						<Link href="/layout-demo/top-nav">Top Nav Layout</Link>
+					</Button>
+					<Button asChild variant="outline">
+						<Link href="/layout-demo/centered">Centered Layout</Link>
+					</Button>
+					<Button asChild variant="outline">
+						<Link href="/marketing-demo">Marketing Layout</Link>
+					</Button>
 				</CardContent>
 			</Card>
 		</div>
