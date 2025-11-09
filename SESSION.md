@@ -33,16 +33,19 @@
 
 ### Immediate Priority (This Week)
 
-**Phase A: Error Handling & UX**
-- [ ] Add global error boundary (`src/app/error.tsx`)
-- [ ] Add 404 page (`src/app/not-found.tsx`)
-- [ ] Add loading states at route level (`src/app/dashboard/loading.tsx`)
-- [ ] Create `/components/composed/` directory structure
+**Phase A: Error Handling & UX** ✅ **COMPLETE**
+- [x] Add global error boundary (`src/app/error.tsx`)
+- [x] Add global error handler (`src/app/global-error.tsx`)
+- [x] Add 404 pages (`src/app/not-found.tsx`, `src/app/dashboard/not-found.tsx`)
+- [x] Add loading states (`src/app/dashboard/loading.tsx`, `src/app/dashboard/todos/loading.tsx`, `src/app/(auth)/loading.tsx`)
+- [x] Add error logging helper (`src/lib/error-logger.ts`)
+- [x] Add dashboard error boundary (`src/app/dashboard/error.tsx`)
 
-**Phase B: Security & Middleware**
-- [ ] Add Next.js middleware for route protection (`src/middleware.ts`)
-- [ ] Add environment variable validation with Zod (`src/lib/env.ts`)
-- [ ] Add rate limiting on API routes
+**Phase B: Security & Middleware** ✅ **COMPLETE**
+- [x] Add Next.js middleware for route protection (`src/middleware.ts`)
+- [x] Add environment variable validation with Zod (`src/lib/env.ts`)
+- [x] Add rate limiting helper (`src/lib/rate-limit.ts`)
+- [x] Apply rate limiting to AI API route (`src/app/api/summarize/route.ts`)
 
 ---
 
@@ -157,22 +160,22 @@
 
 ## Next Immediate Action
 
-**Create error handling infrastructure:**
+**Phase B: Security & Middleware Implementation**
 
-1. Create `src/app/error.tsx` - Global error boundary
-2. Create `src/app/not-found.tsx` - 404 page
-3. Create `src/app/dashboard/loading.tsx` - Loading state
-4. Test error handling with intentional errors
+1. Create `src/lib/env.ts` - Environment variable validation with Zod
+2. Create `src/middleware.ts` - Route protection middleware
+3. Add rate limiting helper (`src/lib/rate-limit.ts`)
+4. Apply rate limiting to API routes
 
 **Files to create:**
-- `src/app/error.tsx`
-- `src/app/not-found.tsx`
-- `src/app/dashboard/loading.tsx`
+- `src/lib/env.ts` - Validate BETTER_AUTH_SECRET, GOOGLE_CLIENT_ID, etc.
+- `src/middleware.ts` - Protect /dashboard routes, redirect unauthenticated users
+- `src/lib/rate-limit.ts` - Rate limiting using Cloudflare KV or in-memory Map
+- Update API routes with rate limiting
 
-**Then:**
-- Add `/components/composed/` directory structure
-- Add environment validation (`src/lib/env.ts`)
-- Add middleware (`src/middleware.ts`)
+**After Phase B:**
+- Create `/components/composed/` directory structure
+- Set up testing infrastructure (Vitest + Playwright)
 
 ---
 

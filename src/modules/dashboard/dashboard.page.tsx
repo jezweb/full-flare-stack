@@ -1,4 +1,4 @@
-import { CheckSquare, List, Plus, Layout } from "lucide-react";
+import { CheckSquare, List, Plus, Layout, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -78,6 +78,26 @@ export default async function Dashboard() {
                             <Link href="/layout-demo/sidebar">
                                 <Layout className="mr-2 h-4 w-4" />
                                 View Layouts
+                            </Link>
+                        </Button>
+                    </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow border-primary/20">
+                    <CardHeader>
+                        <CardTitle className="flex items-center">
+                            <Sparkles className="mr-2 h-5 w-5 text-primary" />
+                            AI Summarizer
+                        </CardTitle>
+                        <CardDescription>
+                            Try Cloudflare Workers AI with rate limiting demo
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Button asChild className="w-full" variant="default">
+                            <Link href="/dashboard/ai-demo">
+                                <Sparkles className="mr-2 h-4 w-4" />
+                                Try AI Demo
                             </Link>
                         </Button>
                     </CardContent>
