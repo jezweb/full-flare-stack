@@ -8,10 +8,15 @@ import authRoutes from "../auth.route";
 import type React from "react";
 
 interface LogoutButtonProps extends React.ComponentProps<typeof Button> {
-    // Any additional props can be defined here
+    children?: React.ReactNode;
 }
 
-export default function LogoutButton({ variant = "ghost", className, ...props }: LogoutButtonProps) {
+export default function LogoutButton({
+    variant = "ghost",
+    className,
+    children,
+    ...props
+}: LogoutButtonProps) {
     const router = useRouter();
 
     const handleLogout = async () => {
@@ -30,7 +35,11 @@ export default function LogoutButton({ variant = "ghost", className, ...props }:
 
     return (
         <Button variant={variant} className={className} onClick={handleLogout} {...props}>
-            Log Out <LogOut className="size-4" />
+            {children || (
+                <>
+                    Log Out <LogOut className="size-4" />
+                </>
+            )}
         </Button>
     );
 }

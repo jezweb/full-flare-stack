@@ -49,11 +49,13 @@ export function UserNav({ user }: UserNavProps) {
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
-					<DropdownMenuItem>
+					{/* TODO: Implement user profile page - see CLAUDE.md for implementation guide */}
+					<DropdownMenuItem disabled>
 						<User className="mr-2 h-4 w-4" />
 						<span>Profile</span>
 					</DropdownMenuItem>
-					<DropdownMenuItem>
+					{/* TODO: Implement settings page - see CLAUDE.md for implementation guide */}
+					<DropdownMenuItem disabled>
 						<Settings className="mr-2 h-4 w-4" />
 						<span>Settings</span>
 					</DropdownMenuItem>
