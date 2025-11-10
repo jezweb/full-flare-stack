@@ -2,8 +2,8 @@
 
 **Project**: Full Flare Stack
 **Repository**: https://github.com/jezweb/full-flare-stack
-**Current Phase**: Foundation Complete - Ready for Priority Fixes
-**Last Checkpoint**: 9f9ff2b (2025-11-10)
+**Current Phase**: Priority Fixes Complete ✅
+**Last Checkpoint**: ba08ba3 (2025-11-10)
 **Version**: 1.0.0
 
 ---
@@ -25,157 +25,171 @@
 
 ---
 
-## Current Phase: Priority Fixes & Foundation 🔄
+## Phase A: Error Handling & UX ✅ COMPLETE (2025-11-10)
 
-**Type**: Production-readiness improvements
+**Checkpoint**: ba08ba3
+**Summary**: Added comprehensive error boundaries, 404 pages, loading states, and error logging infrastructure.
+
+- [x] Global error boundary and error handler
+- [x] 404 pages for app and dashboard
+- [x] Loading states across all major routes
+- [x] Error logging helper with categorization
+
+---
+
+## Phase B: Security & Middleware ✅ COMPLETE (2025-11-10)
+
+**Checkpoint**: ba08ba3
+**Summary**: Implemented route protection, environment validation, and rate limiting.
+
+- [x] Next.js middleware for auth protection
+- [x] Environment variable validation with Zod
+- [x] Rate limiting helper with presets
+- [x] Applied rate limiting to AI routes
+
+---
+
+## Phase 1: Testing Infrastructure ✅ COMPLETE (2025-11-10)
+
+**Type**: Test automation and quality assurance
 **Started**: 2025-11-10
-**Spec**: Architecture Review recommendations
+**Stage**: Implementation → Verification → Complete
 
-### Immediate Priority (This Week)
+### Accomplishments
 
-**Phase A: Error Handling & UX** ✅ **COMPLETE**
-- [x] Add global error boundary (`src/app/error.tsx`)
-- [x] Add global error handler (`src/app/global-error.tsx`)
-- [x] Add 404 pages (`src/app/not-found.tsx`, `src/app/dashboard/not-found.tsx`)
-- [x] Add loading states (`src/app/dashboard/loading.tsx`, `src/app/dashboard/todos/loading.tsx`, `src/app/(auth)/loading.tsx`)
-- [x] Add error logging helper (`src/lib/error-logger.ts`)
-- [x] Add dashboard error boundary (`src/app/dashboard/error.tsx`)
+**Testing Framework:**
+- [x] Installed Vitest + @testing-library/react + happy-dom
+- [x] Created `vitest.config.ts` with path aliases
+- [x] Setup test environment and global mocks
+- [x] Added test scripts: `test`, `test:watch`, `test:coverage`
+- [x] Installed coverage provider (@vitest/coverage-v8)
 
-**Phase B: Security & Middleware** ✅ **COMPLETE**
-- [x] Add Next.js middleware for route protection (`src/middleware.ts`)
-- [x] Add environment variable validation with Zod (`src/lib/env.ts`)
-- [x] Add rate limiting helper (`src/lib/rate-limit.ts`)
-- [x] Apply rate limiting to AI API route (`src/app/api/summarize/route.ts`)
+**Test Utilities:**
+- [x] Created test setup file (`src/__tests__/setup.ts`)
+- [x] Created mock utilities (`src/__tests__/utils/mocks.ts`)
+  - mockAuth, mockAuthUnauthenticated
+  - mockD1Database, mockR2Bucket
+  - mockCloudflareContext
+  - createMockFormData
 
----
+**Tests Written (71 total, all passing):**
+- [x] Utils tests (6 tests) - `src/lib/__tests__/utils.test.ts`
+- [x] Error logger tests (13 tests) - `src/lib/__tests__/error-logger.test.ts`
+- [x] Rate limit tests (19 tests) - `src/lib/__tests__/rate-limit.test.ts`
+- [x] Todo schema tests (20 tests) - `src/modules/todos/schemas/__tests__/todo.schema.test.ts`
+- [x] Category schema tests (13 tests) - `src/modules/todos/schemas/__tests__/category.schema.test.ts`
 
-## Short-Term Goals (This Month)
+**Test Coverage: 84.25%**
+- Statements: 84.25%
+- Branches: 94.54%
+- Functions: 41.66%
+- Lines: 83.8%
 
-### Week 1-2: Core Infrastructure
-
-**Testing Setup**
-- [ ] Install Vitest + @testing-library/react
-  ```bash
-  pnpm add -D vitest @testing-library/react @testing-library/jest-dom @vitejs/plugin-react
-  ```
-- [ ] Create `vitest.config.ts`
-- [ ] Add test scripts to package.json
-- [ ] Write first unit test (example: lib/utils.test.ts)
-- [ ] Write first component test (example: components/ui/button.test.tsx)
-
-**E2E Testing Setup**
-- [ ] Install Playwright
-  ```bash
-  pnpm add -D @playwright/test
-  ```
-- [ ] Create `playwright.config.ts`
-- [ ] Write first E2E test (login flow)
-- [ ] Add to CI/CD pipeline (when ready)
-
-**Composed Patterns Directory**
-- [ ] Create directory structure:
-  ```bash
-  mkdir -p src/components/composed/{data-display,layouts,forms,feedback,media,navigation}
-  ```
-- [ ] Add index.ts barrel exports for each category
-- [ ] Update COMPOSED_PATTERNS_ROADMAP.md with directory locations
+### Key Files
+- `vitest.config.ts` - Vitest configuration
+- `src/__tests__/setup.ts` - Global test setup
+- `src/__tests__/utils/mocks.ts` - Reusable test mocks
+- `src/lib/__tests__/*.test.ts` - Utility tests
+- `src/modules/*/schemas/__tests__/*.test.ts` - Schema validation tests
 
 ---
 
-### Week 3-4: First Real Feature
+## Phase 2: Email System (Resend) ⏸️ PLANNED
 
-**Build First Production Feature** (Choose one):
-- [ ] **Option A**: Products Module (e-commerce pattern)
-- [ ] **Option B**: Invoices Module (business app pattern)
-- [ ] **Option C**: Customers Module (CRM pattern)
+**Type**: Transactional emails and notifications
+**Estimated**: 8-10 hours
+**Depends on**: Phase 1 (Testing) ✅
 
-**Feature Workflow:**
-1. Create module structure: `src/modules/[feature]/{actions,components,schemas,models}`
-2. Add database schema and migration
-3. Build CRUD Server Actions
-4. Build UI components using shadcn primitives
-5. Extract patterns after 3rd use → `/components/composed/`
-6. Document patterns with PATTERN_TEMPLATE.md
-7. Update COMPOSED_PATTERNS_ROADMAP.md progress
+### Tasks
+- [ ] Install Resend SDK
+- [ ] Create email module (`src/modules/email/`)
+- [ ] Configure RESEND_API_KEY in .dev.vars and wrangler secrets
+- [ ] Create email templates:
+  - [ ] Welcome email (new user signup)
+  - [ ] Magic link login (better-auth integration)
+  - [ ] Email verification
+  - [ ] Generic notification template
+- [ ] Wire up better-auth email flows
+- [ ] Test in Resend sandbox
+- [ ] Add error handling and retry logic
+- [ ] Document email usage in MODULES.md
 
----
-
-## Medium-Term Goals (Next Quarter)
-
-### Performance & Monitoring
-- [ ] Add Sentry for error tracking
-  ```bash
-  pnpm add @sentry/nextjs
-  ```
-- [ ] Configure Sentry in `sentry.client.config.ts` and `sentry.server.config.ts`
-- [ ] Add Cloudflare Analytics integration
-- [ ] Run Lighthouse audit and fix critical issues
-- [ ] Analyze bundle size with `@next/bundle-analyzer`
-
-### Accessibility
-- [ ] Run axe-core accessibility audit
-- [ ] Fix critical a11y issues (keyboard nav, focus management)
-- [ ] Add skip-to-content links
-- [ ] Test with screen reader (NVDA/JAWS)
-- [ ] Color contrast audit
-
-### Developer Experience
-- [ ] Add database seeding script (`scripts/seed.ts`)
-- [ ] Create development fixtures
-- [ ] Add structured logging (replace console.log)
-- [ ] Improve error messages throughout app
-- [ ] Add TypeScript strict mode (if not already)
+**Key Files to Create:**
+- `src/modules/email/client.ts` - Resend client wrapper
+- `src/modules/email/templates/` - Email templates
+- `src/modules/email/send.ts` - Email sending functions
 
 ---
 
-## Architecture Review Summary
+## Phase 3: Composed Patterns (Layer 2) ⏸️ PLANNED
 
-### ✅ Strengths (What We Have)
-- Three-layer component architecture (primitives → patterns → features)
-- 43 shadcn/ui components (complete Layer 1 foundation)
-- 5 production-ready layouts
-- Solid backend infrastructure (D1, R2, Workers AI, better-auth)
-- Comprehensive documentation
-- 116 TypeScript/React files
+**Type**: Reusable UI patterns
+**Estimated**: 12-15 hours
+**Depends on**: Phase 1 (Testing) ✅
 
-### ⚠️ Gaps Identified (Priority Order)
+### Patterns to Build
+1. **DataTable Pattern** (~5-6 hours)
+   - Column configuration, sorting, pagination
+   - Row selection, bulk actions
+   - Empty states, loading skeletons
+   - Search/filter toolbar
+   - Export to CSV
 
-**HIGH PRIORITY:**
-1. Error boundaries and error pages (critical for UX)
-2. Rate limiting on API routes (security)
-3. Environment variable validation (DX)
+2. **ViewSwitcher Pattern** (~2-3 hours)
+   - Grid/List/Table view toggle
+   - Persist preference to localStorage
+   - Responsive auto-switch
 
-**MEDIUM PRIORITY:**
-4. Testing infrastructure (Vitest + Playwright)
-5. Middleware for route protection
-6. Error tracking (Sentry)
-7. Performance audit (Lighthouse)
+3. **FormField Patterns** (~3-4 hours)
+   - FormFieldWrapper (label + error + description)
+   - FormActions (Save/Cancel/Delete buttons)
+   - ConfirmDialog (extract from todos delete)
+   - ColorPicker (extract from categories)
+   - ImageUploadField (R2 upload with preview)
 
-**LOW PRIORITY:**
-8. Database seeding/fixtures (nice-to-have)
-9. Accessibility audit (depends on audience)
-10. Bundle optimization (premature for MVP)
+4. **Documentation** (~2 hours)
+   - Document each pattern using PATTERN_TEMPLATE.md
+   - Add usage examples
+   - Update COMPOSED_PATTERNS_ROADMAP.md
+
+**Directory Structure:**
+```bash
+mkdir -p src/components/composed/{data-display,layouts,forms,feedback,media,navigation}
+```
 
 ---
 
 ## Next Immediate Action
 
-**Phase B: Security & Middleware Implementation**
+**Ready to start Phase 2 (Email System):**
+1. Install Resend: `pnpm add resend`
+2. Create `src/modules/email/` directory
+3. Add RESEND_API_KEY to `.dev.vars`
+4. Create email client wrapper
 
-1. Create `src/lib/env.ts` - Environment variable validation with Zod
-2. Create `src/middleware.ts` - Route protection middleware
-3. Add rate limiting helper (`src/lib/rate-limit.ts`)
-4. Apply rate limiting to API routes
+**Alternative - Start Phase 3 (Composed Patterns):**
+1. Create directory structure for composed components
+2. Start with DataTable pattern (most useful)
+3. Extract and refactor todos list to use DataTable
 
-**Files to create:**
-- `src/lib/env.ts` - Validate BETTER_AUTH_SECRET, GOOGLE_CLIENT_ID, etc.
-- `src/middleware.ts` - Protect /dashboard routes, redirect unauthenticated users
-- `src/lib/rate-limit.ts` - Rate limiting using Cloudflare KV or in-memory Map
-- Update API routes with rate limiting
+## Deferred: Future Enhancements
 
-**After Phase B:**
-- Create `/components/composed/` directory structure
-- Set up testing infrastructure (Vitest + Playwright)
+**Performance & Monitoring:**
+- Sentry error tracking integration
+- Cloudflare Analytics Engine usage
+- Lighthouse audit and optimization
+- Bundle size analysis
+
+**Accessibility:**
+- axe-core audit and fixes
+- Screen reader testing
+- Keyboard navigation improvements
+
+**Developer Experience:**
+- Database seeding scripts
+- Development fixtures
+- Structured logging (replace console.log)
+- E2E testing with Playwright
 
 ---
 
