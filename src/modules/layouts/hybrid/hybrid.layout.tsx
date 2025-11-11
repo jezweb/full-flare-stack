@@ -32,7 +32,7 @@ export default async function HybridLayout({ children }: HybridLayoutProps) {
 				{/* Top header bar */}
 				<header className="sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b bg-card px-4">
 					<Link href={dashboardRoutes.dashboard} className="text-xl font-bold">
-						TodoApp
+						Full Flare Stack
 					</Link>
 					<div className="ml-auto flex items-center gap-2">
 						<ModeToggle />

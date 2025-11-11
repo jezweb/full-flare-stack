@@ -39,7 +39,7 @@ export default async function TopNavLayout({ children }: TopNavLayoutProps) {
 								href={dashboardRoutes.dashboard}
 								className="text-xl font-bold"
 							>
-								TodoApp
+								Full Flare Stack
 							</Link>
 							<div className="hidden items-center gap-4 md:flex">
 								<Button asChild variant="ghost" size="sm">

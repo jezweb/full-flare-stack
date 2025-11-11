@@ -16,7 +16,7 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
 				<div className="container mx-auto px-4">
 					<div className="flex h-16 items-center justify-between">
 						<Link href="/" className="text-xl font-bold">
-							TodoApp
+							Full Flare Stack
 						</Link>
 						<div className="flex items-center gap-4">
 							<ModeToggle />
@@ -97,7 +97,7 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
 						</div>
 					</div>
 					<div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-						© {new Date().getFullYear()} TodoApp. Built with Next.js +
+						© {new Date().getFullYear()} Full Flare Stack. Built with Next.js +
 						Cloudflare.
 					</div>
 				</div>

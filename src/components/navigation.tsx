@@ -16,7 +16,7 @@ export function Navigation() {
                             href={dashboardRoutes.dashboard}
                             className="text-xl font-bold"
                         >
-                            TodoApp
+                            Full Flare Stack
                         </Link>
                         <div className="items-center space-x-4 hidden md:flex">
                             <Link href={dashboardRoutes.dashboard}>

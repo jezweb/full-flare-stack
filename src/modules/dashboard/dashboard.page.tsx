@@ -14,7 +14,7 @@ export default async function Dashboard() {
         <div className="container mx-auto py-12 px-4">
             <div className="text-center mb-12">
                 <h1 className="text-4xl font-bold mb-4">
-                    Welcome to TodoApp
+                    Welcome to Full Flare Stack
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                     A simple and elegant todo application built with Next.js 15,

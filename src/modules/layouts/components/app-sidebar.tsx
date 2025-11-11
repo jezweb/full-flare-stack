@@ -52,7 +52,7 @@ export function AppSidebar() {
 									<CheckSquare className="size-4" />
 								</div>
 								<div className="flex flex-col gap-0.5 leading-none">
-									<span className="font-semibold">TodoApp</span>
+									<span className="font-semibold">Full Flare Stack</span>
 									<span className="text-xs">Starter Kit</span>
 								</div>
 							</Link>
