@@ -6,8 +6,21 @@ import {
     SummarizerService,
     summarizeRequestSchema,
 } from "@/services/summarizer.service";
+import {
+    rateLimit,
+    rateLimitPresets,
+    getIdentifier,
+    createRateLimitResponse,
+} from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+    // Apply rate limiting (AI calls are expensive - strict limits)
+    const identifier = getIdentifier(request);
+    const rateLimitResult = await rateLimit(rateLimitPresets.ai, identifier);
+
+    if (!rateLimitResult.allowed) {
+        return createRateLimitResponse(rateLimitResult);
+    }
     try {
         // Check authentication
         const auth = await getAuthInstance();
@@ -69,6 +82,11 @@ export async function POST(request: Request) {
                 status: 200,
                 headers: {
                     "Content-Type": "application/json",
+                    "X-RateLimit-Limit": String(rateLimitResult.limit),
+                    "X-RateLimit-Remaining": String(rateLimitResult.remaining),
+                    "X-RateLimit-Reset": String(
+                        Math.floor(Date.now() / 1000) + rateLimitResult.resetIn,
+                    ),
                 },
             },
         );
