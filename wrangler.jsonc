@@ -20,7 +20,7 @@
         {
             "binding": "next_cf_app",
             "database_name": "next-cf-app",
-            "database_id": "757a32d1-5779-4f09-bcf3-b268013395d4",
+            "database_id": "96965971-1fd5-489c-877f-6240cbceb01a",
             "migrations_dir": "./src/drizzle"
         }
     ],
