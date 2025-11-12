@@ -24,6 +24,8 @@ async function getAuth() {
     const db = await getDb();
 
     cachedAuth = betterAuth({
+        baseURL: env.BETTER_AUTH_URL,
+        trustedOrigins: env.TRUSTED_ORIGINS?.split(",").filter(Boolean) || [],
         secret: env.BETTER_AUTH_SECRET,
         database: drizzleAdapter(db, {
             provider: "sqlite",
