@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
 import { updateTodoFieldAction } from "../actions/update-todo.action";
 
 interface ToggleCompleteProps {
@@ -40,11 +40,10 @@ export function ToggleComplete({ todoId, completed }: ToggleCompleteProps) {
     };
 
     return (
-        <Checkbox
+        <Switch
             checked={isCompleted}
             onCheckedChange={handleToggle}
             disabled={isPending}
-            className="h-5 w-5"
         />
     );
 }

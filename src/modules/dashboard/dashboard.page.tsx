@@ -8,8 +8,15 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import getAllTodos from "@/modules/todos/actions/get-todos.action";
 
 export default async function Dashboard() {
+    const todos = await getAllTodos();
+    const totalTodos = todos.length;
+    const completedTodos = todos.filter((todo) => todo.completed).length;
+    const completionPercentage = totalTodos > 0 ? (completedTodos / totalTodos) * 100 : 0;
+
     return (
         <div className="container mx-auto py-12 px-4">
             <div className="text-center mb-12">
@@ -21,6 +28,25 @@ export default async function Dashboard() {
                     TailwindCSS, and shadcn/ui components.
                 </p>
             </div>
+
+            {totalTodos > 0 && (
+                <div className="max-w-2xl mx-auto mb-12">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Your Progress</CardTitle>
+                            <CardDescription>
+                                You've completed {completedTodos} of {totalTodos} todos
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-2">
+                            <Progress value={completionPercentage} className="h-3" />
+                            <p className="text-sm text-muted-foreground text-center">
+                                {completionPercentage.toFixed(0)}% Complete
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+            )}
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <Card className="hover:shadow-lg transition-shadow">

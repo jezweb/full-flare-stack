@@ -120,18 +120,37 @@ pnpm run build:cf
 
 ### Deployment
 
-**Preview deployment (test before production):**
-```bash
-pnpm run deploy:preview
+**IMPORTANT**: Always use `wrangler deploy` directly instead of `pnpm run deploy`.
 
-# Uses wrangler.jsonc [env.preview] config
+**Why?** The `pnpm run deploy` command uses `@opennextjs/cloudflare deploy` which can fail with authentication errors even when `wrangler whoami` shows you're logged in. This is due to how the OpenNext wrapper handles Cloudflare API authentication.
+
+**Recommended deployment workflow:**
+
+```bash
+# 1. Build the project
+pnpm run build:cf
+
+# 2. Deploy directly with wrangler
+wrangler deploy
+
+# That's it! This always works.
 ```
 
-**Production deployment:**
+**Preview deployment (test before production):**
 ```bash
+pnpm run build:cf
+wrangler deploy --env preview
+
+# Note: Uses wrangler.jsonc [env.preview] config
+```
+
+**Alternative (if you prefer npm scripts):**
+```bash
+# This may fail with auth errors - use wrangler deploy instead
 pnpm run deploy
 
-# Uses wrangler.jsonc main config
+# If it fails, just use:
+wrangler deploy
 ```
 
 ### Post-Deployment Checks
@@ -143,6 +162,7 @@ pnpm run deploy
 5. **Check categories** - Verify category colors work
 
 **Common deployment issues:**
+- **Auth errors with `pnpm run deploy`** - Use `wrangler deploy` directly instead
 - Missing environment variables (check Wrangler secrets)
 - Database migrations not applied (run `db:migrate:prod`)
 - OAuth redirect URI mismatch (update Google OAuth settings)
