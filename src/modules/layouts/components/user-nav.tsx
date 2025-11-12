@@ -1,5 +1,6 @@
 import { User, LogOut, Settings } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	Button} from "@/components/ui/button";
 import {
@@ -32,6 +33,7 @@ export function UserNav({ user }: UserNavProps) {
 			<DropdownMenuTrigger asChild>
 				<Button variant="ghost" className="relative h-8 w-8 rounded-full">
 					<Avatar className="h-8 w-8">
+						<AvatarImage src={user.image ?? undefined} alt={user.name} />
 						<AvatarFallback>{initials}</AvatarFallback>
 					</Avatar>
 				</Button>
@@ -49,9 +51,11 @@ export function UserNav({ user }: UserNavProps) {
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
-					<DropdownMenuItem>
-						<User className="mr-2 h-4 w-4" />
-						<span>Profile</span>
+					<DropdownMenuItem asChild>
+						<Link href="/dashboard/profile">
+							<User className="mr-2 h-4 w-4" />
+							<span>Profile</span>
+						</Link>
 					</DropdownMenuItem>
 					<DropdownMenuItem>
 						<Settings className="mr-2 h-4 w-4" />

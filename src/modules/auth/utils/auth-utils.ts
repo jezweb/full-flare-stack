@@ -64,6 +64,10 @@ export async function getCurrentUser(): Promise<AuthUser | null> {
             id: session.user.id,
             name: session.user.name,
             email: session.user.email,
+            image: session.user.image ?? null,
+            emailVerified: Boolean(session.user.emailVerified),
+            createdAt: new Date(session.user.createdAt),
+            updatedAt: new Date(session.user.updatedAt),
         };
     } catch (error) {
         console.error("Error getting current user:", error);
