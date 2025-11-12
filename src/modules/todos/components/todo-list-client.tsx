@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Plus } from "lucide-react";
+import { Plus, LayoutGrid, Table as TableIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { TodoCard } from "./todo-card";
 import { TodoFilters } from "./todo-filters";
+import { TodosTable } from "./todos-table";
 import todosRoutes from "../todos.route";
 
 interface Todo {
@@ -29,8 +31,11 @@ interface TodoListClientProps {
     todos: Todo[];
 }
 
+type ViewMode = "cards" | "table";
+
 export function TodoListClient({ todos }: TodoListClientProps) {
     const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+    const [viewMode, setViewMode] = useState<ViewMode>("cards");
 
     const filteredTodos = useMemo(() => {
         switch (filter) {
@@ -70,7 +75,23 @@ export function TodoListClient({ todos }: TodoListClientProps) {
                 </Link>
             </div>
 
-            <TodoFilters onFilterChange={setFilter} />
+            <div className="flex justify-between items-center mb-6">
+                <TodoFilters onFilterChange={setFilter} />
+                <ToggleGroup
+                    type="single"
+                    value={viewMode}
+                    onValueChange={(value) => {
+                        if (value) setViewMode(value as ViewMode);
+                    }}
+                >
+                    <ToggleGroupItem value="cards" aria-label="Card view">
+                        <LayoutGrid className="h-4 w-4" />
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="table" aria-label="Table view">
+                        <TableIcon className="h-4 w-4" />
+                    </ToggleGroupItem>
+                </ToggleGroup>
+            </div>
 
             {filteredTodos.length === 0 ? (
                 <div className="text-center py-12 w-full">
@@ -94,6 +115,8 @@ export function TodoListClient({ todos }: TodoListClientProps) {
                         </Link>
                     )}
                 </div>
+            ) : viewMode === "table" ? (
+                <TodosTable todos={filteredTodos} />
             ) : (
                 <div className="grid gap-4">
                     {filteredTodos.map((todo) => (

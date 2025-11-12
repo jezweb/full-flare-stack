@@ -2,9 +2,9 @@
 
 **Project**: Full Flare Stack
 **Repository**: https://github.com/jezweb/full-flare-stack
-**Current Phase**: Auth Configuration for Custom Domain
+**Current Phase**: Enhanced UX with shadcn Components
 **Current Stage**: Complete
-**Last Checkpoint**: 42fbe1c (2025-11-12)
+**Last Checkpoint**: f2dc420 (2025-11-12)
 **Planning Docs**: `CLAUDE.md`, `MODULES.md`, `README.md`
 
 ---
@@ -50,14 +50,30 @@
 
 **Summary**: Configured better-auth with environment-based multi-domain support following best practices
 
+### Phase 5: Quick Wins UX Improvements ✅
+**Completed**: 2025-11-12 | **Checkpoint**: f2dc420
+
+**Summary**: Added Tabs filtering, Progress bar on dashboard, and Switch toggles for todo completion
+
 **Completed**:
-- ✅ Added `baseURL` and `trustedOrigins` to betterAuth configuration
-- ✅ Environment variable approach (BETTER_AUTH_URL, TRUSTED_ORIGINS)
-- ✅ Updated TypeScript types (cloudflare-env.d.ts)
-- ✅ Updated .dev.vars for local development
-- ✅ Set Cloudflare production secrets
-- ✅ Deployed with multi-domain OAuth support
-- ✅ Custom domain: https://fullflarestack.jezweb.ai
+- ✅ TodoFilters component with Tabs for All/Active/Completed filtering
+- ✅ Progress component on dashboard showing completion percentage
+- ✅ Switch component replacing checkboxes for todo completion
+- ✅ Client-side filtering with real-time stats display
+- ✅ Deployed version: 1321610b-3832-4edc-b6e5-daf9c06d98a3
+
+### Phase 6: Table View with Sorting ✅
+**Completed**: 2025-11-12 | **Checkpoint**: (current session)
+
+**Summary**: Added professional table view with sortable columns and view mode toggle
+
+**Completed**:
+- ✅ TodosTable component with sortable columns (Title, Priority, Status, Category, Due Date)
+- ✅ ToggleGroup for Cards/Table view switching
+- ✅ Visual priority and status badges with semantic colors
+- ✅ Overdue date highlighting in table view
+- ✅ Inline edit/delete actions in table rows
+- ✅ Deployed version: 9b39a771-eb61-4236-926d-bb7f35ed9149
 
 ---
 
@@ -67,11 +83,16 @@
 - Full Flare Stack branding
 - Working authentication (email/password + Google OAuth)
 - Todos CRUD with categories and images
+- Tab filtering (All/Active/Completed todos)
+- Progress bar showing completion stats
+- Switch toggles for todo completion
+- Table view with sortable columns
+- View mode toggle (Cards/Table)
 - AI demo with Workers AI summarizer
 - Error pages and loading states
 - Modern toast notifications (Sonner)
 - 5 layout demo variants
-- 38 shadcn/ui components installed
+- 38 shadcn/ui components (30 actively used)
 
 ### 📦 Installed but Unused Components (Ready for Future Features):
 
@@ -175,8 +196,8 @@ Add Cmd+K global navigation:
 
 **Primary URL**: https://fullflarestack.jezweb.ai
 **Workers URL**: https://next-cf-app.webfonts.workers.dev
-**Version**: 278e10fc-8882-4445-b5ef-613309944057
-**Status**: ✅ Deployed successfully (multi-domain auth working)
+**Version**: 9b39a771-eb61-4236-926d-bb7f35ed9149
+**Status**: ✅ Deployed successfully (includes table view with sorting)
 **Last Deploy**: 2025-11-12
 
 ---
@@ -200,10 +221,10 @@ None
 
 **Total shadcn/ui Components**: 38
 
-**Actively Used** (25):
-- alert, alert-dialog, avatar, badge, button, card, checkbox, color-picker (custom), dialog, dropdown-menu, form, input, label, navigation-menu, popover, radio-group, select, separator, sheet, sidebar, skeleton, slider, sonner, textarea, tooltip
+**Actively Used** (30):
+- alert, alert-dialog, avatar, badge, button, card, color-picker (custom), dialog, dropdown-menu, form, input, label, navigation-menu, popover, progress, radio-group, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toggle-group, tooltip
 
-**Installed but Unused** (13):
-- accordion, breadcrumb, calendar, command, hover-card, pagination, progress, scroll-area, switch, table, tabs, toggle, toggle-group
+**Installed but Unused** (8):
+- accordion, breadcrumb, calendar, command, hover-card, pagination, scroll-area, toggle
 
 **Dependencies**: sonner (npm package for toast notifications)
