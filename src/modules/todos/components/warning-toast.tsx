@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 interface WarningToastProps {
     warning: string | null;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { updateTodoFieldAction } from "../actions/update-todo.action";
 

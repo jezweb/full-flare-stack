@@ -5,7 +5,7 @@ import { Upload, X } from "lucide-react";
 import Image from "next/image";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
