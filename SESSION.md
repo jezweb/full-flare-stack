@@ -4,7 +4,7 @@
 **Repository**: https://github.com/jezweb/full-flare-stack
 **Current Phase**: User Profile & Settings
 **Current Stage**: In Progress (Phase 2 Complete, Phase 3 Pending)
-**Last Checkpoint**: TBD (2025-11-13)
+**Last Checkpoint**: 0e94ed5 (2025-11-13)
 **Planning Docs**: `CLAUDE.md`, `MODULES.md`, `README.md`, `docs/IMPLEMENTATION_PHASES_PROFILE_SETTINGS.md`
 
 ---
@@ -75,33 +75,33 @@
 - ✅ Inline edit/delete actions in table rows
 - ✅ Deployed version: 9b39a771-eb61-4236-926d-bb7f35ed9149
 
-### Phase 7: User Profile & Settings 🔄
-**Started**: 2025-11-13
+### Phase 7: User Profile & Settings ✅
+**Completed**: 2025-11-13 | **Checkpoint**: TBD
 
-**Progress**:
-- [x] Phase 1: Auth Model Extension ✅
+**Summary**: Added complete user profile and settings functionality with theme control
+
+**Completed**:
+- ✅ Phase 1: Auth Model Extension
   - Extended AuthUser interface with image, emailVerified, createdAt, updatedAt
   - Updated getCurrentUser() to return complete user data
-- [x] Phase 2: Profile Module ✅
-  - Created profile module with full CRUD functionality
+- ✅ Phase 2: Profile Module
   - Profile page at /dashboard/profile with view, edit, and stats
-  - Profile info card with avatar, email, verification badge, dates
-  - Profile stats card with todo completion metrics
+  - Profile info card with avatar, email verification badge, account dates
+  - Profile stats card with todo completion metrics and progress bar
   - Profile form for editing name with React Hook Form + Zod validation
   - Wired up Profile link in dropdown menu
   - Updated user-nav to show Google OAuth avatar
-  - Deployed version: 5ddb1836-85c6-4e2b-8ead-e50d4f92a77c
-- [ ] Phase 3: Settings Module ⏸️
-  - Create settings page with tabs (Appearance + Account)
-  - Wire up Settings link in dropdown menu
-- [ ] Phase 4: Enhanced Dashboard ⏸️
-  - Personalized greeting with user name and avatar
-  - User stats card on dashboard
-- [ ] Phase 5: Testing & Deployment ⏸️
-  - Manual testing checklist
-  - Final production deployment
-
-**Next Action**: Continue with Phase 3 - Create settings module at `src/modules/settings/` with Appearance and Account tabs
+- ✅ Phase 3: Settings Module
+  - Settings page at /dashboard/settings with tab navigation
+  - Appearance tab with Light/Dark/System theme selection (radio group UI)
+  - Account tab with email verification, member since date, OAuth status
+  - Wired up Settings link in dropdown menu
+  - Deployed version: a32f0bb1-cc37-4b77-93e4-7b377057080e
+- ⏭️ Phase 4: Enhanced Dashboard (Skipped)
+  - Not needed for current requirements
+- ✅ Phase 5: Manual Testing & Deployment
+  - Tested profile page, settings tabs, theme switching
+  - Deployed to production successfully
 
 ---
 
@@ -111,17 +111,19 @@
 - Full Flare Stack branding
 - Working authentication (email/password + Google OAuth)
 - **User profile page** with view/edit functionality, avatar, stats
+- **User settings page** with theme control and account info
 - Todos CRUD with categories and images
 - Tab filtering (All/Active/Completed todos)
 - Progress bar showing completion stats
 - Switch toggles for todo completion
 - Table view with sortable columns
 - View mode toggle (Cards/Table)
+- Theme switching (Light/Dark/System)
 - AI demo with Workers AI summarizer
 - Error pages and loading states
 - Modern toast notifications (Sonner)
 - 5 layout demo variants
-- 38 shadcn/ui components (31 actively used)
+- 38 shadcn/ui components (33 actively used)
 
 ### 📦 Installed but Unused Components (Ready for Future Features):
 
@@ -225,8 +227,8 @@ Add Cmd+K global navigation:
 
 **Primary URL**: https://fullflarestack.jezweb.ai
 **Workers URL**: https://next-cf-app.webfonts.workers.dev
-**Version**: 5ddb1836-85c6-4e2b-8ead-e50d4f92a77c
-**Status**: ✅ Deployed successfully (includes profile module with avatar fix)
+**Version**: a32f0bb1-cc37-4b77-93e4-7b377057080e
+**Status**: ✅ Deployed successfully (includes profile & settings modules)
 **Last Deploy**: 2025-11-13
 
 ---
