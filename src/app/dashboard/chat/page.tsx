@@ -1,10 +1,11 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { useState } from "react";
 import { Conversation } from "@/components/ai-elements/conversation";
 import {
 	Message,
-	MessageAvatar,
 	MessageContent,
 } from "@/components/ai-elements/message";
 import {
@@ -12,13 +13,26 @@ import {
 	PromptInputTextarea,
 	PromptInputSubmit,
 } from "@/components/ai-elements/prompt-input";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { BotIcon, UserIcon } from "lucide-react";
 
 export default function ChatPage() {
-	const { messages, input, handleInputChange, handleSubmit, isLoading, error } =
-		useChat({
+	const [input, setInput] = useState("");
+
+	// Use AI SDK v5 API with DefaultChatTransport
+	const { messages, sendMessage, status, error } = useChat({
+		transport: new DefaultChatTransport({
 			api: "/api/chat",
-		});
+		}),
+	});
+
+	const isLoading = status === "streaming" || status === "submitted";
+
+	const handleSubmit = (message: { text: string }) => {
+		if (!message.text.trim()) return;
+		sendMessage({ text: message.text });
+		setInput("");
+	};
 
 	return (
 		<div className="flex h-full flex-col">
@@ -45,14 +59,22 @@ export default function ChatPage() {
 				) : (
 					messages.map((message) => (
 						<Message key={message.id} from={message.role}>
-							<MessageAvatar>
-								{message.role === "user" ? (
-									<UserIcon className="size-4" />
-								) : (
-									<BotIcon className="size-4" />
-								)}
-							</MessageAvatar>
-							<MessageContent>{message.content}</MessageContent>
+							<div className="flex items-start gap-3">
+								<Avatar className="size-8">
+									<AvatarFallback>
+										{message.role === "user" ? (
+											<UserIcon className="size-4" />
+										) : (
+											<BotIcon className="size-4" />
+										)}
+									</AvatarFallback>
+								</Avatar>
+								<MessageContent>
+									{message.parts
+										.map((part) => (part.type === "text" ? part.text : ""))
+										.join("")}
+								</MessageContent>
+							</div>
 						</Message>
 					))
 				)}
@@ -70,7 +92,7 @@ export default function ChatPage() {
 				<PromptInput onSubmit={handleSubmit}>
 					<PromptInputTextarea
 						value={input}
-						onChange={handleInputChange}
+						onChange={(e) => setInput(e.target.value)}
 						placeholder="Type your message..."
 						disabled={isLoading}
 					/>

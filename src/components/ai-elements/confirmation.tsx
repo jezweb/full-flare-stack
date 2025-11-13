@@ -39,9 +39,16 @@ type ToolUIPartApproval =
     }
   | undefined;
 
+// Custom extended state type for approval workflow (not in AI SDK v5)
+type ApprovalState =
+  | ToolUIPart["state"]
+  | "approval-requested"
+  | "approval-responded"
+  | "output-denied";
+
 type ConfirmationContextValue = {
   approval: ToolUIPartApproval;
-  state: ToolUIPart["state"];
+  state: ApprovalState;
 };
 
 const ConfirmationContext = createContext<ConfirmationContextValue | null>(
@@ -60,7 +67,7 @@ const useConfirmation = () => {
 
 export type ConfirmationProps = ComponentProps<typeof Alert> & {
   approval?: ToolUIPartApproval;
-  state: ToolUIPart["state"];
+  state: ApprovalState;
 };
 
 export const Confirmation = ({
