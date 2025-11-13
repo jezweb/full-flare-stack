@@ -2,10 +2,10 @@
 
 **Project**: Full Flare Stack
 **Repository**: https://github.com/jezweb/full-flare-stack
-**Current Phase**: Phase 8 Complete - Ready for Next Feature
-**Current Stage**: Planning/Selection
-**Last Checkpoint**: 30d464d (2025-11-13)
-**Planning Docs**: `CLAUDE.md`, `MODULES.md`, `README.md`
+**Current Phase**: Rollback Complete - Evaluating Chat Options
+**Current Stage**: Planning
+**Last Checkpoint**: 020e573 (2025-11-13)
+**Planning Docs**: `CLAUDE.md`, `MODULES.md`, `README.md`, `docs/AI_CHAT_INVESTIGATION.md`, `docs/AGENTS_SETUP.md`
 
 ---
 
@@ -103,35 +103,31 @@
   - Tested profile page, settings tabs, theme switching
   - Deployed to production successfully
 
-### Phase 8: AI Chat Agent ✅
-**Completed**: 2025-11-13 | **Checkpoint**: 30d464d
+### Phase 8: AI Chat Agent - ROLLED BACK 🔄
+**Attempted**: 2025-11-13 | **Rolled Back**: 2025-11-13 | **Checkpoint**: 020e573
 
-**Summary**: Implemented and deployed AI-powered chat with Workers AI using AI SDK v5
+**Summary**: AI chat implementation never functioned due to fundamental protocol incompatibility
 
-**What Was Accomplished**:
-- ✅ Installed workers-ai-provider package (2.0.0)
-- ✅ Created /api/chat streaming endpoint with Workers AI (@cf/openai/gpt-oss-120b)
-- ✅ Created chat UI at /dashboard/chat with AI Elements components
-- ✅ Added navigation link to sidebar
-- ✅ **Fixed AI SDK v5 compatibility issues**:
-  - Researched AI SDK v5 breaking changes vs v4
-  - Compared alternatives (Cloudflare Agents SDK, direct REST API)
-  - Fixed chat page to use correct v5 API (`sendMessage`, `DefaultChatTransport`, manual input state)
-  - Fixed AI Elements components (type extensions for custom approval states)
-  - Removed edge runtime declaration (not needed for OpenNext)
-- ✅ Built and deployed successfully to production
-- ✅ Version: a5254cbe-7a96-4a77-9b45-a0856bc6f5de
+**Root Cause Identified**:
+- Frontend (`useChat` + `DefaultChatTransport`) expects **Server-Sent Events (SSE)** format
+- Backend (`streamText().toTextStreamResponse()`) returns **plain text stream**
+- These protocols are fundamentally incompatible by design
+- No amount of type fixes or header adjustments could resolve the mismatch
 
-**Key Technical Decisions**:
-- Chose to fix AI SDK v5 implementation over switching to Cloudflare Agents SDK
-- AI SDK v5 + workers-ai-provider is production-ready and well-documented
-- Cloudflare Agents SDK is experimental and overkill for basic chat
+**What Was Removed**:
+- ❌ `src/app/api/chat/route.ts` - API endpoint with Workers AI
+- ❌ `src/app/dashboard/chat/` - Chat UI page
+- ❌ `src/components/ai-elements/` - All 35 AI UI components
+- ❌ AI SDK dependencies: `ai`, `@ai-sdk/react`, `workers-ai-provider`
 
-**Files Changed**:
-- `src/app/dashboard/chat/page.tsx` - Complete rewrite for AI SDK v5 API
-- `src/components/ai-elements/confirmation.tsx` - Extended approval state types
-- `src/components/ai-elements/message.tsx` - Fixed button size
-- `src/components/ai-elements/tool.tsx` - Relaxed Record types for custom states
+**Documentation Created**:
+- ✅ `docs/AI_CHAT_INVESTIGATION.md` - Complete technical analysis of failure
+- ✅ `docs/AGENTS_SETUP.md` - Preparation guide for Cloudflare Agents SDK
+
+**Next Steps**:
+- Evaluate Cloudflare Agents SDK (currently in beta, not on npm)
+- Consider alternative chat implementations with proper SSE support
+- Or build custom solution using Workers AI REST API directly
 
 ---
 
@@ -142,7 +138,6 @@
 - Working authentication (email/password + Google OAuth)
 - **User profile page** with view/edit functionality, avatar, stats
 - **User settings page** with theme control and account info
-- **AI Chat** with Workers AI (gpt-oss-120b, streaming responses, rate-limited) ✅ **FIXED & DEPLOYED**
 - Todos CRUD with categories and images
 - Tab filtering (All/Active/Completed todos)
 - Progress bar showing completion stats
@@ -258,9 +253,10 @@ Add Cmd+K global navigation:
 
 **Primary URL**: https://fullflarestack.jezweb.ai
 **Workers URL**: https://next-cf-app.webfonts.workers.dev
-**Version**: a5254cbe-7a96-4a77-9b45-a0856bc6f5de
-**Status**: ✅ Deployed successfully (AI Chat fully functional with AI SDK v5)
-**Last Deploy**: 2025-11-13
+**Version**: Pending deployment (rollback build ready)
+**Status**: 🔄 Clean build successful, ready to deploy without AI chat
+**Last Successful Deploy**: 2025-11-13 (before rollback)
+**Next Deploy**: Will remove non-functional AI chat feature
 
 ---
 
