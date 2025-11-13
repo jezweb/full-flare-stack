@@ -253,10 +253,11 @@ Add Cmd+K global navigation:
 
 **Primary URL**: https://fullflarestack.jezweb.ai
 **Workers URL**: https://next-cf-app.webfonts.workers.dev
-**Version**: Pending deployment (rollback build ready)
-**Status**: 🔄 Clean build successful, ready to deploy without AI chat
-**Last Successful Deploy**: 2025-11-13 (before rollback)
-**Next Deploy**: Will remove non-functional AI chat feature
+**Version**: 3a191745-37fb-4096-949d-4fdbdb5ba2ee
+**Status**: ✅ Deployed successfully (AI chat removed, clean build)
+**Last Deploy**: 2025-11-13 (rollback deployed)
+**Upload**: 10108.98 KiB / gzip: 1956.32 KiB
+**Worker Startup Time**: 26 ms
 
 ---
 
