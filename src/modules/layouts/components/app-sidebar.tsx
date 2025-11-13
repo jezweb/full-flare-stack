@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, CheckSquare, type LucideIcon } from "lucide-react";
+import { Home, CheckSquare, Bot, type LucideIcon } from "lucide-react";
 import {
 	Sidebar,
 	SidebarContent,
@@ -33,6 +33,11 @@ const navGroups: NavGroup[] = [
 				title: "Todos",
 				url: todosRoutes.list,
 				icon: CheckSquare,
+			},
+			{
+				title: "AI Chat",
+				url: "/dashboard/chat",
+				icon: Bot,
 			},
 		],
 	},

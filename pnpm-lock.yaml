@@ -188,6 +188,9 @@ importers:
       use-stick-to-bottom:
         specifier: ^1.1.1
         version: 1.1.1(react@19.1.0)
+      workers-ai-provider:
+        specifier: ^2.0.0
+        version: 2.0.0(zod@4.1.8)
       zod:
         specifier: ^4.1.8
         version: 4.1.8
@@ -5899,6 +5902,9 @@ packages:
     resolution: {integrity: sha512-8D1UmsxrRr3Go7enbYCsYoiWeGn66u1WFNojPSgtjp7z8pV2cXskjr05vQ1OOzl7+rg1hDDofnCJqVwChMym8g==}
     engines: {node: '>=16'}
     hasBin: true
+
+  workers-ai-provider@2.0.0:
+    resolution: {integrity: sha512-AoGGy8aOR3lzCzRouSxA6mgrCKuZfrnzxvOHHy9kOzwz4Mm4Hb55a/9G8zz+v0I/mn8bYLs/4I6JABSl/zXJ7w==}
 
   wrangler@4.46.0:
     resolution: {integrity: sha512-WRROO7CL+MW/E44RMT4X7w32qPjufiPpGdey5D6H7iKzzVqfUkTRULxYBfWANiU1yGnsiCXQtu3Ap0G2TmohtA==}
@@ -12830,6 +12836,13 @@ snapshots:
       '@cloudflare/workerd-linux-64': 1.20251105.0
       '@cloudflare/workerd-linux-arm64': 1.20251105.0
       '@cloudflare/workerd-windows-64': 1.20251105.0
+
+  workers-ai-provider@2.0.0(zod@4.1.8):
+    dependencies:
+      '@ai-sdk/provider': 2.0.0
+      '@ai-sdk/provider-utils': 3.0.17(zod@4.1.8)
+    transitivePeerDependencies:
+      - zod
 
   wrangler@4.46.0:
     dependencies:
