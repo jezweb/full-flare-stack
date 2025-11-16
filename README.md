@@ -776,9 +776,11 @@ pnpm run deploy:preview
 - [ ] Add text translation service with `@cf/meta/m2m100-1.2b`
 - [ ] Implement text embeddings for semantic search with `@cf/baai/bge-base-en-v1.5`
 - [ ] Add image classification API with `@cf/microsoft/resnet-50`
-- [ ] Create chat/conversation API with conversation memory
+- [ ] Create chat/conversation API using [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/) (see `docs/AGENTS_SETUP.md`)
 - [ ] Add content moderation with AI classification
 - [ ] Implement sentiment analysis for user feedback
+
+> **Note**: AI SDK v5 chat implementation was rolled back due to protocol incompatibility. See `docs/AI_CHAT_INVESTIGATION.md` for technical details.
 
 ### 💳 Payments & Communication
 - [ ] Implement email sending with [Resend](https://resend.com/) & [Cloudflare Email Routing](https://www.cloudflare.com/developer-platform/products/email-routing/)
